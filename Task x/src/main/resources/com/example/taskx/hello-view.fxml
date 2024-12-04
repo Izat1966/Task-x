@@ -1,16 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.Scene?>
+<?import javafx.stage.Stage?>
 
-<?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.taskx.HelloController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+<VBox spacing="10" alignment="TOP_CENTER" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.taskx.HelloController">
+    <TextField fx:id="nameField" promptText="Employee Name"/>
 
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
+    <ComboBox fx:id="typeComboBox" promptText="Employee Type">
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <String fx:value="Full-time"/>
+                <String fx:value="Part-time"/>
+                <String fx:value="Contractor"/>
+            </FXCollections>
+        </items>
+    </ComboBox>
+
+    <TextField fx:id="annualSalaryField" promptText="Annual Salary (Full-time)" visible="false"/>
+    <TextField fx:id="hoursField" promptText="Hours Worked (Part-time)" visible="false"/>
+    <TextField fx:id="hourlyRateField" promptText="Hourly Rate" visible="false"/>
+
+    <Button fx:id="addButton" text="Add Employee"/>
+    <Button fx:id="calculateButton" text="Calculate Salaries"/>
+
+    <TableView fx:id="tableView">
+        <columns>
+            <TableColumn fx:id="nameColumn" text="Name"/>
+            <TableColumn fx:id="typeColumn" text="Employee Type"/>
+            <TableColumn fx:id="salaryColumn" text="Salary"/>
+        </columns>
+    </TableView>
 </VBox>
